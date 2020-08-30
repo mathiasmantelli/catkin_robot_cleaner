@@ -129,6 +129,49 @@ def gridClean():
     move(2.0, 9.0, True)
     pass
 
+def spiralClean():
+    vel_msg = Twist()
+
+    count = 0
+
+    constant_speed = 4
+
+    vk = 1
+    wk = 2
+    rk = 0.5
+    loop_rate = rospy.Rate(1)
+
+    my_pose = Pose()
+
+    my_pose.x = 5.54
+    my_pose.y = 5.54
+    my_pose.theta = 0
+
+    moveGoal(my_pose, 0.01)
+
+    test = True
+    while(test):
+        rk += 0.5
+        vel_msg.linear.x = rk
+        vel_msg.linear.y = 0
+        vel_msg.linear.z = 0
+
+        vel_msg.angular.x = 0
+        vel_msg.angular.y = 0
+        vel_msg.angular.z = constant_speed
+
+        velocity_publisher.publish(vel_msg)
+
+        loop_rate.sleep()
+
+        if((x > 10) or (y > 10)):
+            test = False
+    
+    vel_msg.linear.x = 0
+    velocity_publisher.publish(vel_msg)
+
+
+
 if __name__ == '__main__':
     try:
         rospy.init_node('robot_cleaner', anonymous=True)
@@ -147,7 +190,9 @@ if __name__ == '__main__':
         #goal_pose.theta = degrees2radians(90)
         #moveGoal(goal_pose, 0.01);
 
-        gridClean();
+        #gridClean()
+
+        spiralClean()
         rospy.spin()
 
     except rospy.ROSInternalException:
