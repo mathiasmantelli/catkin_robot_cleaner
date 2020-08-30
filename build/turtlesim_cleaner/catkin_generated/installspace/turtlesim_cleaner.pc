@@ -1,0 +1,8 @@
+prefix=/home/mathias/catkin_robot_cleaner/install
+
+Name: turtlesim_cleaner
+Description: Description of turtlesim_cleaner
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib -lturtlesim_cleaner
+Requires: roscpp rospy std_msgs geometry_msgs message_runtime
