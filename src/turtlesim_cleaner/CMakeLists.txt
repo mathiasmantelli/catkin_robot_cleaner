@@ -13,6 +13,10 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   geometry_msgs
   message_generation
+  actionlib_msgs
+  cv_bridge
+  image_transport
+  OpenCV REQUIRED
 )
 
 
@@ -105,7 +109,7 @@ catkin_package(
   #INCLUDE_DIRS include
   LIBRARIES turtlesim_cleaner
   CATKIN_DEPENDS roscpp rospy std_msgs geometry_msgs message_runtime
-  DEPENDS system_lib
+  DEPENDS system_lib  
 )
 
 ###########
@@ -117,6 +121,7 @@ catkin_package(
 include_directories(
  include
  ${catkin_INCLUDE_DIRS}
+ ${OpenCV_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -136,6 +141,17 @@ include_directories(
 add_executable(robot_cleaner_node src/robot_cleaner.cpp)
 target_link_libraries(robot_cleaner_node ${catkin_LIBRARIES})
 
+add_executable(read_video_cpp src/read_video.cpp)
+target_link_libraries(read_video_cpp ${catkin_LIBRARIES})
+target_link_libraries(read_video_cpp ${OpenCV_LIBRARIES})
+
+add_executable(open_copy_cpp src/open_copy.cpp)
+target_link_libraries(open_copy_cpp ${catkin_LIBRARIES})
+target_link_libraries(open_copy_cpp ${OpenCV_LIBRARIES})
+
+add_executable(image_pub_sub_cpp src/image_pub_sub.cpp)
+target_link_libraries(image_pub_sub_cpp ${catkin_LIBRARIES})
+target_link_libraries(image_pub_sub_cpp ${OpenCV_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
