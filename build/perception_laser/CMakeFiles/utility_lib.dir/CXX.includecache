@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mathias/catkin_robot_cleaner/src/perception_laser/src/laserscan/utility_lib.cpp
+utility_lib.h
+/home/mathias/catkin_robot_cleaner/src/perception_laser/src/laserscan/utility_lib.h
+
+/home/mathias/catkin_robot_cleaner/src/perception_laser/src/laserscan/utility_lib.h
+math.h
+-
+

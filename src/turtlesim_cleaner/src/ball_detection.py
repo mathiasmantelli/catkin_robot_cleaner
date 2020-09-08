@@ -61,6 +61,7 @@ def get_contour_center(contour):
         cy= int(M['m01']/M['m00'])
     return cx, cy
 
+15 setembro
 def main():
     image_name = "../images/tennisball04.jpg"
     yellowLower =(30, 150, 100)
